@@ -4,3 +4,7 @@
     color: #003f2d !important;
     font-size: 22px;
 }
+
+.dropdown-menu li:hover {
+    cursor: pointer !important;
+}
