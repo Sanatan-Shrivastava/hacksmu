@@ -1,0 +1,6 @@
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    font-weight: bolder;
+    background: transparent!important;
+    color: #003f2d !important;
+    font-size: 22px;
+}
