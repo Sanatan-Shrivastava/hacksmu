@@ -1,0 +1,101 @@
+AssetType,RunningStatus,Room,Floor
+HVAC,service,Room 12,Floor 2
+HVAC,running,Room 32,Floor 4
+Elevator,service,Room 78,Floor 8
+Elevator,running,Room 56,Floor 6
+Electrical Panel,service,Room 95,Floor 10
+Electrical Panel,running,Room 80,Floor 8
+HVAC,service,Room 66,Floor 7
+Elevator,running,Room 42,Floor 5
+Elevator,running,Room 87,Floor 9
+Elevator,service,Room 95,Floor 10
+Fire Alarm,running,Room 7,Floor 1
+Fire Alarm,service,Room 42,Floor 5
+Electrical Panel,service,Room 40,Floor 4
+Electrical Panel,service,Room 69,Floor 7
+Fire Alarm,running,Room 97,Floor 10
+Plumbing System,running,Room 55,Floor 6
+Plumbing System,down,Room 28,Floor 3
+HVAC,down,Room 98,Floor 10
+Fire Alarm,service,Room 32,Floor 4
+Plumbing System,down,Room 17,Floor 2
+Plumbing System,service,Room 25,Floor 3
+Fire Alarm,running,Room 67,Floor 7
+Electrical Panel,service,Room 52,Floor 6
+Elevator,running,Room 69,Floor 7
+Elevator,service,Room 70,Floor 7
+Plumbing System,down,Room 4,Floor 1
+HVAC,running,Room 82,Floor 9
+Fire Alarm,service,Room 64,Floor 7
+Plumbing System,service,Room 98,Floor 10
+HVAC,running,Room 59,Floor 6
+Plumbing System,running,Room 77,Floor 8
+Electrical Panel,down,Room 41,Floor 5
+HVAC,running,Room 94,Floor 10
+Electrical Panel,service,Room 85,Floor 9
+HVAC,down,Room 30,Floor 3
+Electrical Panel,down,Room 75,Floor 8
+Elevator,down,Room 16,Floor 2
+HVAC,running,Room 92,Floor 10
+Plumbing System,service,Room 5,Floor 1
+Elevator,running,Room 54,Floor 6
+Plumbing System,service,Room 84,Floor 9
+Elevator,down,Room 63,Floor 7
+Electrical Panel,service,Room 5,Floor 1
+Plumbing System,service,Room 94,Floor 10
+Elevator,running,Room 49,Floor 5
+Fire Alarm,down,Room 75,Floor 8
+Plumbing System,running,Room 83,Floor 9
+Electrical Panel,running,Room 33,Floor 4
+HVAC,down,Room 28,Floor 3
+HVAC,running,Room 22,Floor 3
+HVAC,running,Room 89,Floor 9
+HVAC,service,Room 76,Floor 8
+Fire Alarm,service,Room 15,Floor 2
+Fire Alarm,service,Room 94,Floor 10
+Fire Alarm,down,Room 22,Floor 3
+Plumbing System,running,Room 74,Floor 8
+HVAC,running,Room 13,Floor 2
+Electrical Panel,service,Room 20,Floor 2
+Elevator,service,Room 41,Floor 5
+Electrical Panel,service,Room 79,Floor 8
+Fire Alarm,service,Room 61,Floor 7
+Plumbing System,down,Room 65,Floor 7
+Plumbing System,service,Room 9,Floor 1
+Fire Alarm,service,Room 86,Floor 9
+Fire Alarm,down,Room 80,Floor 8
+Electrical Panel,running,Room 69,Floor 7
+Plumbing System,down,Room 3,Floor 1
+HVAC,service,Room 15,Floor 2
+Plumbing System,service,Room 88,Floor 9
+HVAC,service,Room 91,Floor 10
+Elevator,running,Room 80,Floor 8
+HVAC,running,Room 64,Floor 7
+Plumbing System,down,Room 16,Floor 2
+Elevator,down,Room 58,Floor 6
+Fire Alarm,service,Room 19,Floor 2
+Fire Alarm,running,Room 64,Floor 7
+Electrical Panel,service,Room 4,Floor 1
+Fire Alarm,service,Room 93,Floor 10
+Electrical Panel,down,Room 33,Floor 4
+Fire Alarm,down,Room 61,Floor 7
+Elevator,running,Room 82,Floor 9
+Fire Alarm,down,Room 17,Floor 2
+Elevator,down,Room 3,Floor 1
+Electrical Panel,service,Room 90,Floor 9
+Fire Alarm,running,Room 80,Floor 8
+Elevator,running,Room 80,Floor 8
+Fire Alarm,down,Room 75,Floor 8
+Electrical Panel,service,Room 6,Floor 1
+Plumbing System,down,Room 25,Floor 3
+HVAC,down,Room 43,Floor 5
+Electrical Panel,running,Room 8,Floor 1
+Elevator,running,Room 44,Floor 5
+Electrical Panel,down,Room 65,Floor 7
+Elevator,running,Room 97,Floor 10
+Plumbing System,down,Room 49,Floor 5
+Electrical Panel,running,Room 83,Floor 9
+Fire Alarm,running,Room 87,Floor 9
+HVAC,down,Room 27,Floor 3
+Plumbing System,service,Room 8,Floor 1
+Plumbing System,service,Room 31,Floor 4
