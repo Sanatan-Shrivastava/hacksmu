@@ -1,5 +1,5 @@
 // Define the base URL where your Flask server is hosted
-const baseUrl = "https://87a0-20-25-188-239.ngrok-free.app";
+const baseUrl = "https://9713-20-25-188-239.ngrok-free.app";
 
 // Function to make GET requests to your Flask APIs
 async function fetchApi(endpoint) {

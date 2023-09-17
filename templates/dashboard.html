@@ -35,7 +35,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-6">
           <div class="card border-0 mb-4 rounded-3 shadow-sm">
-            <div class="card-header alert alert-success  border-0 py-3">
+            <div class="card-header alert alert-success border-0 py-3">
               <h5 class="my-0 fw-medium fs-4">Floor</h5>
             </div>
             <div class="dropdown p-4">
@@ -87,8 +87,8 @@
         </div>
         <div class="col-lg-6">
           <div class="card mb-4 border-0 rounded-3 shadow-sm">
-            <div class="card-header  alert alert-success  py-3">
-              <h5 class="my-0  fw-medium fs-4">Room</h5>
+            <div class="card-header alert alert-success py-3">
+              <h5 class="my-0 fw-medium fs-4">Room</h5>
             </div>
             <div class="dropdown p-4">
               <button
@@ -146,20 +146,20 @@
         Check Status
       </button>
     </div>
-
+    <br/> 
     <section style="display: none" class="my-1" id="roomDataTable">
       <div class="container">
-        
         <div class="row align-items-md-stretch">
           <h4 id="roomFloorHeading"></h4>
           <center>
-          <div class="alert alert-warning w-75" role="alert">
-          Some systems require Attention! <a href="./">Check Here</a>
-        </div>
-        </center>
-        <br/>
-         <br/>
-          <br/>
+            <div class="alert alert-warning fs-5 lh-1" role="alert">
+              Some systems require Attention!
+              <a class="text-decoration-none" href="./">Check Here</a>
+            </div>
+          </center>
+          <br />
+          <br />
+          <br />
           <div class="col-md-6">
             <div class="list-group">
               <a
@@ -169,7 +169,7 @@
               >
                 <div class="d-flex w-100 justify-content-between">
                   <h5 id="ElectricalPanel" class="mb-1 fw-medium">
-                    Electrical Panel
+                    Electrical Panel System
                   </h5>
                   <small class="text-body-secondary"
                     ><icon
@@ -197,7 +197,7 @@
 
               <a href="#" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 id="FireAlarm" class="mb-1">Fire Alarm</h5>
+                  <h5 id="FireAlarm" class="mb-1">Fire Alarming System</h5>
                   <small class="text-body-secondary"
                     ><i class="bi bi-0-circle" id="FireAlarmStatusIcon"></i
                   ></small>
@@ -232,7 +232,7 @@
                 aria-current="true"
               >
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 id="Elevator" class="mb-1 fw-medium">Elevator</h5>
+                  <h5 id="Elevator" class="mb-1 fw-medium">HVAC Systems</h5>
                   <small class="text-body-secondary"
                     ><i class="bi bi-0-circle" id="HVACStatusIcon"></i
                   ></small>
@@ -245,6 +245,43 @@
             </div>
           </div>
         </div>
+        <br/> <br/> 
+        <ul class="list-unstyled" class="my-5 py-5 list-group">
+          <h4>Past Incidents</h4>
+          <hr color="#000"/>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start py-2"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">HVAC Malfunctioning</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">4 hours ago</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start py-2"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Plumbing Leak</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">3 days ago</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start py-2"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Elevator Stuck</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">4 days ago</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start py-2"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">HVAC System Maintenance</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">1 week ago</span>
+          </li>
+        </ul>
       </div>
     </section>
     <script
