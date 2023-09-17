@@ -33,7 +33,6 @@ async function getNotificationData() {
   }
 }
 
-
 // Function to create a notification card
 function createNotificationCard(notification) {
   const card = document.createElement("div");
@@ -47,7 +46,6 @@ function createNotificationCard(notification) {
   card.innerHTML = content;
   return card;
 }
-
 
 // Get the notifications container
 const notificationsContainer = document.getElementById(
@@ -95,41 +93,38 @@ async function getFutureSeriesData() {
   }
 }
 
-
 var room;
 var floor;
 
- // JavaScript for the first dropdown
-  const dropdownButton = document.getElementById("dropdownButton");
-  const dropdownMenu = document.getElementById("dropdownMenu");
+// JavaScript for the first dropdown
+const dropdownButton = document.getElementById("dropdownButton");
+const dropdownMenu = document.getElementById("dropdownMenu");
 
-  dropdownMenu.addEventListener("click", (e) => {
-    if (e.target.tagName === "OPTION") {
-      floor = e.target.value;
-      console.log("Selected value:", floor);
-    }
-  });
+dropdownMenu.addEventListener("click", (e) => {
+  if (e.target.tagName === "OPTION") {
+    floor = e.target.value;
+    console.log("Selected value:", floor);
+  }
+});
 
 // JavaScript for the second dropdown
-  const dropdownButton1 = document.getElementById("dropdownButton1");
-  const dropdownMenu1 = document.getElementById("dropdownMenu1");
+const dropdownButton1 = document.getElementById("dropdownButton1");
+const dropdownMenu1 = document.getElementById("dropdownMenu1");
 
-  dropdownMenu1.addEventListener("click", (e) => {
-    if (e.target.tagName === "OPTION") {
-      room = e.target.value;
-      console.log("Selected value:", room);
-    }
-  });
-
-
+dropdownMenu1.addEventListener("click", (e) => {
+  if (e.target.tagName === "OPTION") {
+    room = e.target.value;
+    console.log("Selected value:", room);
+  }
+});
 
 function getRoomData() {
   const payload = {
     floor: floor,
-    room: room
-  }
+    room: room,
+  };
 
-  console.log("sending payload to flask backend", payload)
+  console.log("sending payload to flask backend", payload);
 
   fetch("http://localhost:5000/getRoomData", {
     method: "POST",
@@ -138,11 +133,57 @@ function getRoomData() {
     },
     body: JSON.stringify(payload),
   })
-    .then((response) => response.json())
-    .then((data) => console.log("Response from server:", data), arrayShow())
-
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json(); // Parse the response as JSON
+    })
+    .then((data) => {
+      updateSystemStatus(data);
+    })
     .catch((error) => console.error("Error:", error));
 }
 
+// Function to update system statuses
+function updateSystemStatus(payload) {
+  document.getElementById("roomDataTable").style.display = 'block';
+  console.log("updateSystemStatus: ", payload);
+  // Define a mapping of statuses to icons and colors
+  const statusMapping = {
+    running: {
+      iconClass: "bi bi-check-circle-fill text-success fs-5"
+    },
+    service: {
+      iconClass: "bi bi-exclamation-circle-fill text-warning fs-5"
+    },
+    down: {
+      iconClass: "bi bi-x-circle-fill text-danger fs-5"
+    },
+  };
 
+  const room = payload.room;
+  const floor = payload.floor;
 
+  const ep = payload.roomService.ElectricalPanel;
+  const ps = payload.roomService.PlumbingSystem;
+  const fa = payload.roomService.FireAlarm;
+  const el = payload.roomService.Elevator;
+  const hvac = payload.roomService.HVAC;
+
+  document.getElementById("ElectricalPanelStatus").innerHTML = ep;
+  document.getElementById("ElectricalPanelStatusIcon").className =
+    statusMapping[ep].iconClass;
+  document.getElementById("PlumbingSystemsStatus").innerHTML = ps;
+  document.getElementById("PlumbingSystemsStatusIcon").className =
+    statusMapping[ps].iconClass;
+  document.getElementById("FireAlarmStatus").innerHTML = fa;
+  document.getElementById("FireAlarmStatusIcon").className =
+    statusMapping[fa].iconClass;
+  document.getElementById("ElevatorStatus").innerHTML = el;
+  document.getElementById("ElevatorStatusIcon").className =
+    statusMapping[el].iconClass;
+  document.getElementById("HVACStatus").innerHTML = hvac;
+  document.getElementById("HVACStatusIcon").className =
+    statusMapping[hvac].iconClass;
+}
