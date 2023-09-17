@@ -1,5 +1,5 @@
 // Define the base URL where your Flask server is hosted
-const baseUrl = "https://dc47-20-106-75-84.ngrok-free.app";
+const baseUrl = "https://68b4-20-106-75-84.ngrok-free.app";
 
 // Function to make GET requests to your Flask APIs
 async function fetchApi(endpoint) {
@@ -23,15 +23,63 @@ async function fetchApi(endpoint) {
   }
 }
 
-async function getNotificationData() {
+// Get the notifications container
+
+
+async function getUrgentServiceRequests() {
   try {
-    const notificationData = await fetchApi("/getNotification");
-    console.log("Notification Data:", notificationData);
+    const futureData = await fetchApi("/getNotification");
+    document.getElementById("showUrgentRequestBtn").style.display = "None";
+    console.log("Urgent Service Request:", futureData); // Accumulate notifications
+    const urgentNotifications = [];
+    const urgentServiceRequestsContainer = document.getElementById("urgentServiceRequestsContainer");
+    futureData.notifications.forEach((notification) => {
+      console.log(urgentServiceRequestsContainer);
+      const notificationCard = createNotificationCardUrgentServiceRequest(notification);
+      urgentServiceRequestsContainer.appendChild(notificationCard);
+      urgentNotifications.push(notificationCard.innerHTML);
+    });
+
+    // Combine all notifications into a single email message
+    const emailMessage = urgentNotifications.join("<br>");
+
+    emailjs.init("DAZHOYfCb-cRmDSIu");
+
+    // Send an email using EmailJS
+    emailjs
+      .send("service_iojgk85", "template_qsu5igb", {
+        to_email: "sanatan.mscs@gmail.com",
+        subject: "Service Required Notification",
+        message: emailMessage,
+      })
+      .then(
+        function (response) {
+          console.log("Email sent successfully:", response);
+        },
+        function (error) {
+          console.error("Email send error:", error);
+        }
+      );
   } catch (error) {
     console.error("Error:", error);
     throw error;
   }
 }
+
+// Function to create a notification card
+function createNotificationCardUrgentServiceRequest(notification) {
+  const card = document.createElement("div");
+  card.className = "alert alert-light";
+  // Create content for the notification card using the JSON data
+  const content = `
+          Urgent Service needed for <strong>${notification.AssetType}</strong> on <strong>Floor - ${notification.floor}, Room - ${notification.room}</strong>
+        `;
+
+  card.innerHTML = content;
+  return card;
+}
+
+
 
 // Function to create a notification card
 function createNotificationCard(notification) {
@@ -103,6 +151,7 @@ const dropdownMenu = document.getElementById("dropdownMenu");
 dropdownMenu.addEventListener("click", (e) => {
   if (e.target.tagName === "OPTION") {
     floor = e.target.value;
+    dropdownButton.innerText = `Floor ${floor}`;
     console.log("Selected value:", floor);
   }
 });
@@ -114,11 +163,14 @@ const dropdownMenu1 = document.getElementById("dropdownMenu1");
 dropdownMenu1.addEventListener("click", (e) => {
   if (e.target.tagName === "OPTION") {
     room = e.target.value;
+    dropdownButton1.innerText = `Room ${room}`;
     console.log("Selected value:", room);
   }
 });
 
+
 function getRoomData() {
+
   const payload = {
     floor: floor,
     room: room,
@@ -126,7 +178,7 @@ function getRoomData() {
 
   console.log("sending payload to flask backend", payload);
 
-  fetch("http://localhost:5000/getRoomData", {
+  fetch("/getRoomData", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -145,8 +197,18 @@ function getRoomData() {
     .catch((error) => console.error("Error:", error));
 }
 
+
 // Function to update system statuses
 function updateSystemStatus(payload) {
+  const roomFloorStatus = document.getElementById("roomFloorHeading");
+  const h4Content = `
+      <h4 class="fs-2 my-4 py-4 fw-normal text-center text-secondary">
+        Assets' status for 
+        <span class="text-black fw-semibold" id="roomStatus">Room No. ${payload.room}</span> on 
+        <span class="text-black fw-semibold" id="floorStatus">Floor ${payload.floor}</span>
+      </h4>
+    `;
+  roomFloorStatus.innerHTML = h4Content;
   document.getElementById("roomDataTable").style.display = 'block';
   console.log("updateSystemStatus: ", payload);
   // Define a mapping of statuses to icons and colors
