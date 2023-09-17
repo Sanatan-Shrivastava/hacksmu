@@ -1,5 +1,5 @@
 // Define the base URL where your Flask server is hosted
-const baseUrl = "https://68b4-20-106-75-84.ngrok-free.app";
+const baseUrl = "https://87a0-20-25-188-239.ngrok-free.app";
 
 // Function to make GET requests to your Flask APIs
 async function fetchApi(endpoint) {
@@ -32,16 +32,30 @@ async function getUrgentServiceRequests() {
     document.getElementById("showUrgentRequestBtn").style.display = "None";
     console.log("Urgent Service Request:", futureData); // Accumulate notifications
     const urgentNotifications = [];
-    const urgentServiceRequestsContainer = document.getElementById("urgentServiceRequestsContainer");
+    const urgentServiceRequestsContainer = document.getElementById(
+      "urgentServiceRequestsContainer"
+    );
     futureData.notifications.forEach((notification) => {
       console.log(urgentServiceRequestsContainer);
-      const notificationCard = createNotificationCardUrgentServiceRequest(notification);
+      const notificationCard =
+        createNotificationCardUrgentServiceRequest(notification);
       urgentServiceRequestsContainer.appendChild(notificationCard);
       urgentNotifications.push(notificationCard.innerHTML);
     });
 
-    // Combine all notifications into a single email message
-    const emailMessage = urgentNotifications.join("<br>");
+    const formattedEmailMessage = urgentNotifications
+      .map((notification) => {
+        // Remove HTML tags and extra spaces
+        const plainText = notification
+          .replace(/<\/?strong>/g, "") // Remove <strong> tags
+          .replace(/\s+/g, " ") // Replace multiple spaces with a single space
+          .trim(); // Remove leading and trailing spaces
+
+        return `- ${plainText}`;
+      })
+      .join("\n\n"); // Join the formatted notifications with double line breaks
+
+      console.log(formattedEmailMessage);
 
     emailjs.init("DAZHOYfCb-cRmDSIu");
 
@@ -50,7 +64,7 @@ async function getUrgentServiceRequests() {
       .send("service_iojgk85", "template_qsu5igb", {
         to_email: "sanatan.mscs@gmail.com",
         subject: "Service Required Notification",
-        message: emailMessage,
+        message: formattedEmailMessage,
       })
       .then(
         function (response) {
@@ -72,8 +86,8 @@ function createNotificationCardUrgentServiceRequest(notification) {
   card.className = "alert alert-light";
   // Create content for the notification card using the JSON data
   const content = `
-          Urgent Service needed for <strong>${notification.AssetType}</strong> on <strong>Floor - ${notification.floor}, Room - ${notification.room}</strong>
-        `;
+      <strong>${notification.AssetType}</strong> on Floor - <strong>${notification.floor}</strong>, Room - <strong>${notification.room}</strong>
+    `;
 
   card.innerHTML = content;
   return card;
@@ -87,8 +101,7 @@ function createNotificationCard(notification) {
   card.className = "alert alert-light";
   // Create content for the notification card using the JSON data
   const content = `
-          Service needed for <strong>${notification.AssetType}</strong> on <strong>${notification.ServiceRequiredFrom}</strong><br>
-          Please complete service request before <strong> ${notification.ServiceBefore}</strong> for <strong>${notification.room}</strong>
+          Respond to Service Request for ${notification.AssetType} on ${notification.ServiceRequiredFrom} and before <strong> ${notification.ServiceBefore}</strong> for Room - <strong>${notification.room}</strong>
         `;
 
   card.innerHTML = content;
@@ -115,17 +128,28 @@ async function getFutureSeriesData() {
       notifications.push(notificationCard.innerHTML);
     });
 
-    // Combine all notifications into a single email message
-    const emailMessage = notifications.join("<br>");
+    const formattedEmailMessage = notifications
+      .map((notification) => {
+        // Remove HTML tags and extra spaces
+        const plainText = notification
+          .replace(/<\/?strong>/g, "") // Remove <strong> tags
+          .replace(/\s+/g, " ") // Replace multiple spaces with a single space
+          .trim(); // Remove leading and trailing spaces
+          
+        return `- ${plainText}`;
+      })
+      .join("\n\n"); // Join the formatted notifications with double line breaks
+
+    console.log(formattedEmailMessage);
 
     emailjs.init("DAZHOYfCb-cRmDSIu");
 
     // Send an email using EmailJS
     emailjs
-      .send("service_iojgk85", "template_qsu5igb", {
+      .send("service_iojgk85", "template_yui84mt", {
         to_email: "sanatan.mscs@gmail.com",
         subject: "Service Required Notification",
-        message: emailMessage,
+        message: formattedEmailMessage,
       })
       .then(
         function (response) {
