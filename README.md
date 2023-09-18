@@ -1,8 +1,6 @@
 # hacksmu
 Hackathon at The Southern Methodist University.
 
-Link : https://7140-20-106-101-232.ngrok-free.app/
-
 Inspiration : 
 The inspiration behind this project is to revolutionize commercial building management by harnessing AI and machine learning to provide real-time insights, predictive maintenance, and user-friendly interfaces for building managers. We aim to address the challenges of asset management in the commercial buildings industry and create a more efficient, cost-effective, and sustainable approach that benefits all stakeholders.
 
